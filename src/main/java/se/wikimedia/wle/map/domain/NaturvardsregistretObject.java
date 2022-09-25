@@ -1,0 +1,54 @@
+package se.wikimedia.wle.map.domain;
+
+import lombok.Data;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+
+@Data
+public class NaturvardsregistretObject implements Serializable {
+
+    public static final long serialVersionUID = 1L;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NaturvardsregistretObject naturvardsregistretObject = (NaturvardsregistretObject) o;
+        return Objects.equals(identity, naturvardsregistretObject.identity);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identity);
+    }
+
+    private UUID identity;
+
+    private String stereotype;
+
+    private String wikidataQ;
+    private String naturvardsregistretIdentity;
+
+    private String wikidataLabel;
+
+    private String featureGeometry;
+
+    private String commonsMapPath;
+    private String commonsMapRevisionId;
+
+    private List<String> wikidataImageNames = new ArrayList<>();
+
+    /**
+     * Timestamp this object was last updated according to Wikidata
+     */
+    private LocalDateTime wikidataEntryUpdated;
+
+    private LocalDateTime updatedFromWikidata;
+    private LocalDateTime updatedFromCommons;
+
+}

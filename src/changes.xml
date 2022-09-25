@@ -1,0 +1,24 @@
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+    <body>
+        <release version="0.0.1" date="2020-05-01" description="Initial">
+            <action dev="kalle" type="add">
+                Initial.
+            </action>
+        </release>
+        <release version="0.0.2" date="2022-09-22">
+            <action dev="kalle" type="add">
+                A range of bugfixes to handle changes in WikiData
+                Introduced Google guava caches for simplified geometries,
+                rather than keeping them all in RAM at all times.
+            </action>
+        </release>
+        <release version="0.0.3" date="2022-09-25">
+            <action dev="kalle" type="add">
+                Refactored old version to Spring Boot project.
+            </action>
+        </release>
+    </body>
+
+</document>
