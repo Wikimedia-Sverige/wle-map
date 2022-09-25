@@ -6,27 +6,14 @@ cd jwbf
 mvn install -Dtest=false -DfailIfNoTests=false
 ```
 
-Start API server on port 8080 by executing `./gradlew build run` from the root.
+Start API server on port 8080 by executing `mvn spring-boot:run -Dspring-boot.run.jvmArguments="-DCONSTRETTO_TAGS=dev,fully_cached"` from the root.
 
-Webapp available in `client/src/main/webapp`
+`CONSTRETTO_TAGS` denotes environmental settings available in `src/main/resources/service.ini`
 
-Our Nginx setup:
-```
-server {
-	server_name _;
-	listen 80;
-	root /home/wle-2020-sweden-map/client/src/main/webapp;
-	location /api/ {
-		proxy_pass	http://localhost:8080/api/;
-	}
-	client_max_body_size 1M;
-}
-```
+`dev` use paths in the project target/ directory
 
-In order to keep the index warm,
-setup a cron job that execute a query matching large parts of (or all) the data now and then.
+`prod` use paths for installation on `sites.wikimedia.se`.
 
-```
-# m h  dom mon dow   command
-* * * * * curl --header "Content-Type: application/json"   --request POST   --data '{"boundingBox":{"southLatitude":58.06625598088457,"westLongitude":14.886474609375002,"northLatitude":60.71888458495197,"eastLongitude":19.1436767578125},"distanceTolerance":0.05}'   http://localhost:8080/api/nvr/search/envelope > /dev/null 2>&1
-```
+For high CPU and low RAM, use `no_cache`. This will allow for 5 concurrent users on a single core with a mean response time of 800ms.
+
+For low CPU and high RAM, use `fully_cached`. This will allow for several hundred concurrent users on a single core with a mean response time of 10ms.
