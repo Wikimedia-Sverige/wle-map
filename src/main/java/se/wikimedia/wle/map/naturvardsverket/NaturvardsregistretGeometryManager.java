@@ -118,6 +118,8 @@ public class NaturvardsregistretGeometryManager extends AbstractLifecycle implem
                 0.0001
         };
 
+        log.info("Populating caches...");
+
         for (NaturvardsregistretObject object : prevayler.execute(new Query<Root, Collection<NaturvardsregistretObject>>() {
             @Override
             public Collection<NaturvardsregistretObject> query(Root root, Date date) throws Exception {
@@ -136,7 +138,7 @@ public class NaturvardsregistretGeometryManager extends AbstractLifecycle implem
             }
         }
 
-        log.info("{} jts geometries, {} geojson geometries, {} simplified geometries", jtsGeometries.size(), geoJsonGeometries.size(), simplifiedGeometries.size());
+        log.info("Cache populated with {} jts geometries, {} geojson geometries, {} simplified geometries", jtsGeometries.size(), geoJsonGeometries.size(), simplifiedGeometries.size());
 
     }
 

@@ -214,7 +214,7 @@ public class NaturvardsregistretDataManager extends AbstractLifecycle implements
 
     private void poll() throws Exception {
 
-        log.info("Polling Wikidata for updated items...");
+        log.debug("Polling Wikidata for updated items...");
 
         LocalDateTime started = LocalDateTime.now(clock);
 
@@ -263,7 +263,7 @@ public class NaturvardsregistretDataManager extends AbstractLifecycle implements
     private int poll(String sparql) throws Exception {
         ObjectNode response = wikidata.query(sparql);
         ArrayNode bindings = (ArrayNode) response.get("results").get("bindings");
-        log.info("Found {} Wikidata items that has been touched since previous poll", bindings.size());
+        log.trace("Found {} Wikidata items that has been touched since previous poll", bindings.size());
         for (int i = 0; i < bindings.size(); i++) {
             if (isStopping()) {
                 return 0;
