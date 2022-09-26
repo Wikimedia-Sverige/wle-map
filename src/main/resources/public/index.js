@@ -184,7 +184,7 @@ function search() {
   var bounds = map.getBounds();
   $.ajax({
     type: "POST",
-    url: "://api/nvr/search/envelope",
+    url: "/api/nvr/search/envelope",
     contentType: "application/json",
     dataType: "json",
     data: JSON.stringify({
