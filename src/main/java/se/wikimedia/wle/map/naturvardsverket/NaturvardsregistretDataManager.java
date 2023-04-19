@@ -444,7 +444,7 @@ public class NaturvardsregistretDataManager extends AbstractLifecycle implements
             return;
         }
 
-        log.debug("Downloading and processing Commons article {}", object.getCommonsMapPath());
+        log.info("Downloading and processing Commons article {}", object.getCommonsMapPath());
 
         Article article = commons.getBot().getArticle(object.getCommonsMapPath());
         if (!article.getRevisionId().equals(object.getCommonsMapRevisionId())) {
