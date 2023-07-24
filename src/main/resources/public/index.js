@@ -75,9 +75,8 @@ function initializeMap() {
   var attribution = '<a href="https://www.openstreetmap.org">OSM</a> | <a href="https://wikimedia.se/">WMSE</a> | Läs mer om <a href="https://commons.wikimedia.org/wiki/Commons:Wiki_Loves_Earth_2021_in_Sweden/sv">Wiki Loves Earth</a>';
 
   // var base = new L.TileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
-  var base = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  var base = new L.TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   // var base = new L.TileLayer('https://maps.keb.kodapan.se/tiles/hydda/v2/base/{z}/{x}/{y}.png', {
-    subdomains: "abc",
     attribution: attribution,
     maxZoom: 20,
     maxNativeZoom: 19,
